@@ -77,32 +77,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
-        Intent intent = new Intent(this, MainActivity2.class);  // 명시적 인텐트
-        intent.putExtra("id", etID.getText().toString());
-        intent.putExtra("pw", etPW.getText().toString());
-        startActivity(intent);
-
-        intent = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("http://www.inha.ac.kr"));
-        startActivity(intent);
-
-//        if(view.getId() == R.id.buttonplayasset){
-//            mediaPlayer = new MediaPlayer();
-//            try {
-//                mediaPlayer.setDataSource(descriptor.getFileDescriptor(),
-//                        descriptor.getStartOffset(), descriptor.getLength());
-//                descriptor.close();
-//                mediaPlayer.prepare();
-//                mediaPlayer.start();
-//            } catch (IOException e){
-//                e.printStackTrace();
-//            }
-//        }else if (view.getId() == R.id.buttonplayraw){
-//            mediaPlayer = MediaPlayer.create(this, R.raw.just_dance);
-//            mediaPlayer.start();
-//        }else {
-//            if(mediaPlayer != null) mediaPlayer.stop();
-//        }
+        if(view.getId() == R.id.buttonplayasset){
+            mediaPlayer = new MediaPlayer();
+            try {
+                mediaPlayer.setDataSource(descriptor.getFileDescriptor(),
+                        descriptor.getStartOffset(), descriptor.getLength());
+                descriptor.close();
+                mediaPlayer.prepare();
+                mediaPlayer.start();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }else if (view.getId() == R.id.buttonplayraw){
+            mediaPlayer = MediaPlayer.create(this, R.raw.just_dance);
+            mediaPlayer.start();
+        }else {
+            if(mediaPlayer != null) mediaPlayer.stop();
+        }
 
     }
 
